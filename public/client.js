@@ -1055,9 +1055,13 @@ submit_bt.onclick = function(){
 var submit_div = document.getElementById("submit_div");
 submit_div.style.height = canvas_height.toString() +"px";
 
+console.log("width"+canvas_height.toString());
+
+//해삳오별 조절해줘야 함
 var bt_wrapper = document.getElementById("bt_wrapper");
-bt_wrapper.style.width = canvas_height.toString() +"px";
-console.log("!"+bt_wrapper.style.width);
+bt_wrapper.style.width = (canvas_height*1.5).toString() +"px";
+console.log("width"+bt_wrapper.style.width);
+// console.log("!"+bt_wrapper.style.width);
 
 // Resizing window to make responsive
 const windowResize = ()=>{

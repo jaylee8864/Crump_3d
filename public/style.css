@@ -4,6 +4,8 @@
     margin: 0;
     padding: 0;
 }
+html, body {
+}
 /* canvas{
     width: 100vw;
     height : 100vh;
@@ -291,9 +293,12 @@ button:disabled {
 }
 
 #bt_wrapper {
-    margin-left: 100%;
+    /* margin-left: 100%; */
+    width:100%;
 }
 
+
+/*mobile*/
 @media screen and (max-width: 768px) {
     
 .dust-class{
