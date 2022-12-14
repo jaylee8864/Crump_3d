@@ -1,0 +1,43 @@
+const express =  require('express');
+const app = express();
+const path = require('path');
+var nodemailer = require('nodemailer');
+var transpoter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user : 'crump7256@gmail.com',
+		pass: 'lil@42858943'
+	}
+});
+var mailOptions = {
+	from: 'izr8809@gmail.com',
+	to: 'izr8809@gmail.com',
+	subject: 'image',
+	text: 'that was easy'
+};
+
+
+app.use(express.static(__dirname + '/public'));
+app.use('/build/', express.static(path.join(__dirname, 'node_modules/three/build')));
+app.use('/jsm/', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
+
+app.listen(3000, ()=>{
+    console.log('visit http://localhost:3000/');
+});
+
+app.get('/12', function(req,res){
+
+    console.log("!");
+	transporter.sendMail(mailOptions, function(error, info){
+		if(error){
+			console.log(error);
+		}else{
+			console.log(info.response);
+		}
+	});
+
+})
+app.post('/', function(req,res){
+
+    console.log("!");
+})

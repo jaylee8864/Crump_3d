@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Three Js Template</title>
+        <link rel="stylesheet" href="./style.css">
+        <script type="importmap">
+            {
+                "imports":{
+                    "three": "./build/three.module.js",
+                    "three/examples/controls/OrbitControls": "./jsm/controls/OrbitControls.js",
+                    "three/examples/loaders/GLTFLoader": "./jsm/loaders/GLTFLoader.js",
+                    "three/examples/controls/DragControls": "./jsm/controls/DragControls.js"
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="wrapper"> 
+            <img src ='../images/crump_logo.png' style="margin-left: 5%; margin-top:1%; margin-bottom:1%;width:14vh"/>
+        </div>
+        <!-- <canvas class="web-gl">
+        </canvas> -->
+
+        <div class="bt_wrapper" id="bt_wrapper" style='margin-left: 5% '>
+            <button class="button" id="front"  style='margin-right: 1% '>Front</button>
+            <button class="button" id="back">Back</button>            
+            <button class="button" id="newlogo" style='margin-left: 15% '> Add Logo  </button>            
+        </div>
+        <div >
+            <script type="module" src="./client.js"></script>
+        </div>
+        <!-- <img style="width: 500px;" id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"> -->
+        <input type="file" id ="real_file" hidden="hidden" />
+        <input type="file" id ="real_file_2" hidden="hidden" />
+        <div>
+            <div id="canvas" >
+                <!-- <img style="width: 500px;" id="content" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"> -->
+            </div>
+            
+            <div id="submit_div">
+                
+                <div class="dust-class">
+                    <label for="itemname">팀이름</label> <br>
+                    <input type="text" class ="txt-input" id="itemname" placeholder="팀이름을 입력해주세요">
+                </div>
+                <div id="bottom_div" style= 'width: 100%;  '>
+                    
+                    <!-- <button class="btn" id="submit"  style='margin-left: 0% '>제출</button> -->
+                    
+                        <div class="button_base b02_slide_in">
+                            <div>제출</div>
+                            <div></div>
+                            <div id="submit">제출</div>
+                        </div>
+                    
+                    <!-- <img style="width: 500px;" id="content" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"> -->
+                </div>
+
+            </div>
+        </div>
+        <!-- <div class="wrapper" style=' float: right; margin-right: 0% ;margin-top: 5%;'>
+            <button class="btn" id="front" >제출</button>
+            <button class="btn" id="back">이미지업로드</button>            
+        </div> -->
+    </body>
+</html>
