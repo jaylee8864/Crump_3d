@@ -9,7 +9,7 @@ const renderer = new THREE.WebGLRenderer();
 console.log(window.innerWidth);
 console.log(window.innerHeight);
 var canvas_height;
-if(window.innerHeight > 700)
+if(window.innerWidth > 600)
 {
     if(window.innerHeight > window.innerWidth )
     {
@@ -28,7 +28,7 @@ if(window.innerHeight > 700)
     }
 }
 else{
-    if(window.innerHeight >window.innerWidth )
+    if(window.innerHeight > window.innerWidth )
     {
         renderer.setSize(window.innerWidth*1, window.innerWidth*1);
         canvas_height = window.innerWidth*1
@@ -68,7 +68,11 @@ const image1_url = new URL('../images/exex.png', import.meta.url);
 const image2_url = new URL('../images/123.png', import.meta.url);
 const image3_url = new URL('../images/logo_ex.png', import.meta.url);
 const image4_url = new URL('../images/crump_logo.png', import.meta.url);
-
+const navbar_backimg_url = new URL('../images/navbar_back.png', import.meta.url);
+const trash_canimg_url = new URL('../images/trash_can_back.png', import.meta.url);
+const nabar_crump_logoimg_url = new URL('../images/crump_logo_bt.png', import.meta.url);
+const logoaddimg_url = new URL('../images/logoadd.png', import.meta.url);
+const crumpnavbarbackimg_url = new URL('../images/crumpnavbarback.png', import.meta.url);
 // var loader_img = new THREE.ImageLoader();
 // var imomg = loader_img.load(image1_url, function ( image ) {
 //     console.log(imomg.height);
@@ -239,8 +243,8 @@ function make_nav_bar(){
     isNavBarExist = true;
 
     //nav bar gen
-    let navBarTex = new THREE.TextureLoader().load(image1_url.href );
-    let navBarGeo = new THREE.PlaneGeometry(0.45, 0.15, 20, 1);
+    let navBarTex = new THREE.TextureLoader().load(navbar_backimg_url.href );
+    let navBarGeo = new THREE.PlaneGeometry(0.5, 0.2, 20, 1);
     let navBarMat = new THREE.MeshBasicMaterial({ map: navBarTex ,transparent: true });
     nav_bar = new THREE.Mesh(navBarGeo, navBarMat);
     
@@ -284,23 +288,15 @@ function make_nav_bar(){
 
 function makeCrumpNavbar()
 {
-    let CrumpNavbarTex = new THREE.TextureLoader().load(image1_url.href );
+    //b
+    let CrumpNavbarTex = new THREE.TextureLoader().load(crumpnavbarbackimg_url.href );
     let CrumpNavbarGeo = new THREE.PlaneGeometry(1, 0.5, 20, 1);
     let CrumpNavbarMat = new THREE.MeshBasicMaterial({ map: CrumpNavbarTex ,transparent: true});
     CrumpNavbar = new THREE.Mesh(CrumpNavbarGeo, CrumpNavbarMat);
     CrumpNavbar.position.y = 0;
     CrumpNavbar.position.z = nav_bar.position.z +0.01;
 
-    //text
-    let CrumpNavbar_textTex = new THREE.TextureLoader().load(image4_url.href );
-    let CrumpNavbar_textGeo = new THREE.PlaneGeometry(0.1, 0.1, 20, 1);
-    let CrumpNavbar_textMat = new THREE.MeshBasicMaterial({ map: CrumpNavbar_textTex,transparent: true });
-    CrumpNavbar_text = new THREE.Mesh(CrumpNavbar_textGeo, CrumpNavbar_textMat);
-    CrumpNavbar_text.position.x = -0.45;
-    CrumpNavbar_text.position.y = 0.2;
-    CrumpNavbar_text.position.z = nav_bar.position.z +0.01;
-
-    //logo
+    //Big
     let CrumpNavbar_logoTex = new THREE.TextureLoader().load(image4_url.href );
     let CrumpNavbar_logoGeo = new THREE.PlaneGeometry(0.3, 0.3, 20, 1);
     let CrumpNavbar_logoMat = new THREE.MeshBasicMaterial({ map: CrumpNavbar_logoTex,transparent: true });
@@ -309,7 +305,6 @@ function makeCrumpNavbar()
     CrumpNavbar_logo.position.z = nav_bar.position.z +0.01;
     
     scene.add(CrumpNavbar);
-    scene.add(CrumpNavbar_text);
     scene.add(CrumpNavbar_logo);
     
     let CrumpNavbar_logodragControls = new DragControls([CrumpNavbar_logo], camera, renderer.domElement);
@@ -320,7 +315,6 @@ function makeCrumpNavbar()
         arrPlane[idx_plane].material = CrumpNavbar_logoMat;
         arrTex[idx_plane].needsUpdate = true;
         scene.remove(CrumpNavbar);
-        scene.remove(CrumpNavbar_text);
         scene.remove(CrumpNavbar_logo);
       });
 
@@ -329,15 +323,15 @@ function makeCrumpNavbar()
 
 }
 function makeDelBt(){
-    let delBtTex = new THREE.TextureLoader().load(image3_url.href );
-    let delBtGeo = new THREE.PlaneGeometry(0.1, 0.1, 20, 1);
+    let delBtTex = new THREE.TextureLoader().load(trash_canimg_url.href );
+    let delBtGeo = new THREE.PlaneGeometry(0.1, 0.15, 20, 1);
     let delBtMat = new THREE.MeshBasicMaterial({ map: delBtTex,transparent: true });
     delBt = new THREE.Mesh(delBtGeo, delBtMat);
     scene.add(delBt);
     
     
     if(del_first)
-        delBt.position.x += 0.15;
+        delBt.position.x += 0.17;
         del_first = false;
     delBt.position.y = nav_bar.position.y;
     delBt.position.z = nav_bar.position.z;
@@ -352,11 +346,13 @@ function makeDelBt(){
       });
 }
 function makeaddCrumplogoBt(){
-    let addCrumplogoBTTex = new THREE.TextureLoader().load(image3_url.href );
-    let addCrumplogoBtGeo = new THREE.PlaneGeometry(0.1, 0.1, 20, 1);
+    let addCrumplogoBTTex = new THREE.TextureLoader().load(nabar_crump_logoimg_url.href );
+    let addCrumplogoBtGeo = new THREE.PlaneGeometry(0.15, 0.15, 20, 1);
     let addCrumplogoBtMat = new THREE.MeshBasicMaterial({ map: addCrumplogoBTTex  ,transparent: true});
     addCrumplogoBt = new THREE.Mesh(addCrumplogoBtGeo, addCrumplogoBtMat);
     scene.add(addCrumplogoBt);
+
+    addCrumplogoBt.position.x = nav_bar.position.x +0.01;
     
     addCrumplogoBt.position.y = nav_bar.position.y;
     addCrumplogoBt.position.z = nav_bar.position.z;
@@ -367,15 +363,15 @@ function makeaddCrumplogoBt(){
       });
 }
 function makeImageaddBt(){
-    let ImageaddBtTex = new THREE.TextureLoader().load(image3_url.href );
-    let ImageaddBtGeo = new THREE.PlaneGeometry(0.1, 0.1, 20, 1);
+    let ImageaddBtTex = new THREE.TextureLoader().load(logoaddimg_url.href );
+    let ImageaddBtGeo = new THREE.PlaneGeometry(0.13, 0.15, 20, 1);
     let ImageaddBtMat = new THREE.MeshBasicMaterial({ map: ImageaddBtTex ,transparent: true });
     ImageaddBt = new THREE.Mesh(ImageaddBtGeo, ImageaddBtMat);
     scene.add(ImageaddBt);
     
     
     if(del_first)
-        ImageaddBt.position.x -= 0.15;
+        ImageaddBt.position.x -= 0.16;
         del_first = false;
     ImageaddBt.position.y = nav_bar.position.y;
     ImageaddBt.position.z = nav_bar.position.z;
@@ -749,11 +745,11 @@ function plane_gen(iscrump){
             
                 
                 delBt.position.y = nav_bar.position.y;
-                delBt.position.x = nav_bar.position.x +0.15;
-                addCrumplogoBt.position.y = nav_bar.position.y;
-                addCrumplogoBt.position.x = nav_bar.position.x;
+                delBt.position.x = nav_bar.position.x +0.17;
+                addCrumplogoBt.position.y = nav_bar.position.y -0.001;
+                addCrumplogoBt.position.x = nav_bar.position.x+0.01;
                 ImageaddBt.position.y = nav_bar.position.y;
-                ImageaddBt.position.x = nav_bar.position.x -0.15;
+                ImageaddBt.position.x = nav_bar.position.x -0.16;
             
                 //add button
                 // var btn = document.createElement("BUTTON");
@@ -806,11 +802,11 @@ function plane_gen(iscrump){
                     nav_bar.position.x = arrPlane[idx_plane].position.x;
                     nav_bar.position.y = arrPlane[idx_plane].position.y - dify_plane_nav;
                     delBt.position.y = nav_bar.position.y;
-                    delBt.position.x = nav_bar.position.x +0.15;
-                    addCrumplogoBt.position.y = nav_bar.position.y;
-                    addCrumplogoBt.position.x = nav_bar.position.x;
+                    delBt.position.x = nav_bar.position.x +0.17;
+                    addCrumplogoBt.position.y = nav_bar.position.y -0.001;
+                    addCrumplogoBt.position.x = nav_bar.position.x +0.01;
                     ImageaddBt.position.y = nav_bar.position.y;
-                    ImageaddBt.position.x = nav_bar.position.x -0.15;
+                    ImageaddBt.position.x = nav_bar.position.x -0.16;
                     renderer.render(scene, camera);
                 }
             
